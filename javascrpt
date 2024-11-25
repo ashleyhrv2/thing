@@ -1,8 +1,49 @@
-function addItem() {
-    let itemInput = document.getElementById('itemInput');
-    let itemList = document.getElementById('itemList');
-    let newItem = document.createElement('li');
-    newItem.textContent = itemInput.value;
-    itemList.appendChild(newItem);
-    itemInput.value = '';
+
+let countvalue = 0;
+let infoarray = []
+
+function initialize()
+{
+	document.getElementById("txtinput").focus();
+	document.getElementById("txtinput").value=" ";
+}
+
+function addListener() 
+{
+    document.getElementById("btnsubmit").addEventListener("click",insertarray);
+	document.getElementById("btndisplay").addEventListener("click",displayarray);
+}
+
+function insertarray()
+{
+	let inputvalue = " ";
+	inputvalue = document.getElementById("txtinput").value;
+	infoarray.push(inputvalue);
+	
+	alert("Element: " + infoarray[countvalue] + " has been added ");
+	countvalue = countvalue + 1;
+	initialize();
+}
+
+function displayarray()
+{
+	let disparray = " ";
+	let arraylen = infoarray.length;
+	
+	for(let i=0; i<arraylen; i++)
+	{
+		if(disparray==" ")
+			{
+				disparray = infoarray[i];
+			}
+		else
+		{
+			disparray = disparray + " " + infoarray[i];
+					
+		}
+	}
+	
+	
+	document.getElementById("lbldispresult").textContent = disparray;
+	initialize();
 }
